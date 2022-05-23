@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
 import useProductDetails from "../../hooks/useProductDetails";
 import "./Inventory.css";
@@ -10,10 +11,13 @@ const Inventory = () => {
   // console.log(product);
   // const [ProductQuantity, setProductQuantity] = useState();
   //   setProductQuantity(product.quantity);
+  
+  const { register, handleSubmit } = useForm();
 
-  const handelDeliveredBtn = () => {
-    console.log("update");
-  };
+  const onSubmit = data => {
+    console.log(data);
+};
+
 
   return (
     <Container>
@@ -44,18 +48,18 @@ const Inventory = () => {
             </h4>
             <div className="d-flex justify-content-between">
               <button
-                onClick={handelDeliveredBtn}
+                
                 className="btn btn-danger mt-4 mb-5"
               >
                 Delivered
               </button>
               <div className="d-flex mt-4 mb-5 align-items-center">
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <input
                     className="p-1"
                     type="number"
-                    name="quantity"
-                    placeholder="Add Quantity"
+                    {...register("quantity")}
+                    placeholder="Add Number of Quantity"
                   />
                   <input
                     className="btn product-btn ms-2 text-white"
