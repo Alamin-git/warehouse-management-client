@@ -1,0 +1,42 @@
+.login-or {
+  color: #95a0a7;
+  text-align: center;
+  position: relative;
+}
+
+.login-or::before {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 1px;
+  background: #95a0a7;
+  left: 60px;
+  top: 60%;
+  position: absolute;
+}
+
+.login-or::after {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 1px;
+  background: #95a0a7;
+  right: 60px;
+  top: 60%;
+  position: absolute;
+}
+
+.g-sign-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.g-sign-btn img {
+  height: 32px;
+  width: 32px;
+  margin-right: 10px;
+  cursor: pointer;
+  margin-right: 20px;
+}

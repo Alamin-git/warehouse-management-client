@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CustomLink from "../../CustomLink/CustomLink";
-import './HeaderMenu.css';
+import "./HeaderMenu.css";
 
 const HeaderMenu = () => {
   return (
@@ -21,6 +21,11 @@ const HeaderMenu = () => {
               <Nav.Link href="#link">Link</Nav.Link>
             </Nav>
           </Navbar.Collapse>
+          <Nav  className="me-auto fs-4 fw-bold">
+            <Nav.Link as={CustomLink} to="/login" className="">
+              Login
+            </Nav.Link>
+          </Nav>
         </Container>
       </Navbar>
     </div>
