@@ -1,10 +1,14 @@
+import { signOut } from "firebase/auth";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../../firebase.init";
 import CustomLink from "../../CustomLink/CustomLink";
 import "./HeaderMenu.css";
 
 const HeaderMenu = () => {
+  const [user] = useAuthState(auth);
   return (
     <div>
       <Navbar bg="light" expand="lg" className="mt-0 mb-0 pt-0 pb-0">
@@ -19,13 +23,51 @@ const HeaderMenu = () => {
                 Home
               </Nav.Link>
               <Nav.Link href="#link">Link</Nav.Link>
+              {user &&
+                <>
+                  <Nav.Link
+                    as={CustomLink}
+                    className="header-menu"
+                    to={"/manageProduct"}
+                  >
+                    Manage Items
+                  </Nav.Link>
+                  <Nav.Link
+                    as={CustomLink}
+                    className="header-menu"
+                    to={"/addItems"}
+                  >
+                    Add Items
+                  </Nav.Link>
+                  <Nav.Link
+                    as={CustomLink}
+                    className="header-menu"
+                    to={"/myItems"}
+                  >
+                    My Items
+                  </Nav.Link>
+                </>
+            }
             </Nav>
-          </Navbar.Collapse>
-          <Nav  className="me-auto fs-4 fw-bold">
-            <Nav.Link as={CustomLink} to="/login" className="">
-              Login
-            </Nav.Link>
+          <Nav className="me-auto fs-4 fw-bold">
+            {user ? (
+              <Nav.Link
+                as={CustomLink}
+                onClick={() => {
+                  signOut(auth);
+                }}
+                className="header-menu"
+                to={"/login"}
+              >
+                Logout
+              </Nav.Link>
+            ) : (
+              <Nav.Link as={CustomLink} to="/login" className="">
+                Login
+              </Nav.Link>
+            )}
           </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </div>

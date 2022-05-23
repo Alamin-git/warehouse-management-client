@@ -1,28 +1,65 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes } from 'react-router-dom';
-import './App.css';
-import Main from './pages/Home/Main/Main';
-import Inventory from './pages/Inventory/Inventory';
-import Login from './pages/Login/Login';
-import ManageProducts from './pages/ManageProducts/ManageProducts';
-import NotFound from './pages/NotFound/NotFound';
-import Footer from './pages/Shared/Footer/Footer';
-import HeaderMenu from './pages/Shared/HeaderMenu/HeaderMenu';
-import SignUp from './pages/SignUp/SignUp';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+import AddItems from "./pages/AddItems/AddItems";
+import Main from "./pages/Home/Main/Main";
+import Inventory from "./pages/Inventory/Inventory";
+import Login from "./pages/Login/Login";
+import ManageProducts from "./pages/ManageProducts/ManageProducts";
+import NotFound from "./pages/NotFound/NotFound";
+import Footer from "./pages/Shared/Footer/Footer";
+import HeaderMenu from "./pages/Shared/HeaderMenu/HeaderMenu";
+import SignUp from "./pages/SignUp/SignUp";
+import RequireAuth from "./RequireAuth/RequireAuth";
 
 function App() {
   return (
     <div>
-      <HeaderMenu/>
+      <HeaderMenu />
       <Routes>
-        <Route path='/' element={<Main/>}></Route>
-        <Route path='/product/:id' element={<Inventory/>}/>
-        <Route path='/manageProduct' element={<ManageProducts/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/signup' element={<SignUp/>}/>
-        <Route path='*' element={<NotFound/>}/>
+        <Route path="/" element={<Main />}></Route>
+        <Route
+          path="/product/:id"
+          element={
+            <RequireAuth>
+              <Inventory />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/manageProduct"
+          element={
+            <RequireAuth>
+              <ManageProducts />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/addItems"
+          element={
+            <RequireAuth>
+              <AddItems />
+            </RequireAuth>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    <Footer/>
+      <Footer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+      />
     </div>
   );
 }

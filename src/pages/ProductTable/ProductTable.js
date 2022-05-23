@@ -9,7 +9,6 @@ const ProductTable = ({ product }) => {
       </td>
       <td>{name}</td>
       <td>{quantity}</td>
-      {/* <td className=''><TrashIcon /></td> */}
       <td><button className="border p-2 btn btn-danger px-3 fw-bold">X</button></td>
     </tr>
   );
