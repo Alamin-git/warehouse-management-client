@@ -59,7 +59,6 @@ const ManageProducts = () => {
                     </td>
                   </tr>
                 </>
-                // <ProductTable key={product._id} product={product} />
               ))}
             </tbody>
           </Table>

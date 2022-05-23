@@ -42,7 +42,7 @@ const HeaderMenu = () => {
                   <Nav.Link
                     as={CustomLink}
                     className="header-menu"
-                    to={"/myItems"}
+                    to={`/myItems/${user.email}`}
                   >
                     My Items
                   </Nav.Link>

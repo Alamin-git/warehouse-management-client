@@ -8,9 +8,6 @@ import "./Inventory.css";
 const Inventory = () => {
   const { id } = useParams();
   const [product] = useProductDetails(id);
-  // console.log(product);
-  // const [ProductQuantity, setProductQuantity] = useState();
-  //   setProductQuantity(product.quantity);
   
   const { register, handleSubmit } = useForm();
 
@@ -59,7 +56,7 @@ const Inventory = () => {
                     className="p-1"
                     type="number"
                     {...register("quantity")}
-                    placeholder="Add Number of Quantity"
+                    placeholder="Number of Quantity"
                   />
                   <input
                     className="btn product-btn ms-2 text-white"
