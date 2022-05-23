@@ -1,0 +1,11 @@
+.footer {
+  background: #7d529dc0;
+}
+
+.footer-li {
+  list-style: none;
+  cursor: pointer;
+}
+.footer-li:hover {
+  border-bottom: 1px solid white;
+}

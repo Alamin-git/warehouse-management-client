@@ -1,0 +1,11 @@
+.not-found {
+  height: 80vh;
+}
+.not-found h1 {
+  letter-spacing: 2rem;
+  font-size: 7rem;
+  font-weight: 700;
+}
+.not-found h3 {
+  color: #7d529deb;
+}

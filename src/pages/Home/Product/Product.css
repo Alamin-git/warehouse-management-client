@@ -1,0 +1,10 @@
+.product-img {
+  height: 15rem;
+  width: 100%;
+}
+.product-btn {
+  background: #7d529deb;
+}
+.product-btn:hover {
+  background: #5e0c9ceb;
+}

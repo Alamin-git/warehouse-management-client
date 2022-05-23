@@ -1,0 +1,12 @@
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url(../../../images/warehouse-banner.jpg);
+  height: 82vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+.banner-heading {
+  color: antiquewhite;
+}
