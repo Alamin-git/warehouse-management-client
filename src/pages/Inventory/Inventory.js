@@ -2,19 +2,51 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import useProductDetails from "../../hooks/useProductDetails";
 import "./Inventory.css";
 
 const Inventory = () => {
   const { id } = useParams();
   const [product] = useProductDetails(id);
-  
+
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = data => {
-    console.log(data);
-};
+  const onSubmit = (data) => {
+    const url = `http://localhost:5000/product/${id}`;
+    fetch(url, {
+      method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      toast('Quantity Updated')
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  };
 
+  const handelDelivered = () =>{
+    const url = `http://localhost:5000/product/${id}`;
+    fetch(url, {
+      method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(1)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      toast('Quantity Updated')
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  }
 
   return (
     <Container>
@@ -44,12 +76,7 @@ const Inventory = () => {
               <span className="fw-bold text-secondary">{product.quantity}</span>
             </h4>
             <div className="d-flex justify-content-between">
-              <button
-                
-                className="btn btn-danger mt-4 mb-5"
-              >
-                Delivered
-              </button>
+              <button onClick={handelDelivered} className="btn btn-danger mt-4 mb-5">Delivered</button>
               <div className="d-flex mt-4 mb-5 align-items-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <input
@@ -66,7 +93,9 @@ const Inventory = () => {
                 </form>
               </div>
             </div>
-            <Link className="btn product-btn text-white" to="/manageProduct" >Manage Products</Link>
+            <Link className="btn product-btn text-white" to="/manageProduct">
+              Manage Products
+            </Link>
           </div>
         </div>
       </div>
