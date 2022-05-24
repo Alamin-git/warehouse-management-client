@@ -7,7 +7,7 @@ import auth from "../../firebase.init";
 
 const AddItems = () => {
     const [user] = useAuthState(auth);
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
         const url = `http://localhost:5000/product`
@@ -22,6 +22,7 @@ const AddItems = () => {
           .then(result => console.log(result))
 
           toast('Item Added')
+          reset();
     };
 
   return (

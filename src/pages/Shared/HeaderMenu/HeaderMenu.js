@@ -19,8 +19,8 @@ const HeaderMenu = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto fs-4 fw-bold">
-              <Nav.Link as={CustomLink} to="" className="">
-                Home
+              <Nav.Link as={CustomLink} to="/blog" className="">
+                Blog
               </Nav.Link>
               <Nav.Link href="#link">Link</Nav.Link>
               {user &&

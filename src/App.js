@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import auth from "./firebase.init";
 import AddItems from "./pages/AddItems/AddItems";
+import Blog from "./pages/Blog/Blog";
 import Main from "./pages/Home/Main/Main";
 import Inventory from "./pages/Inventory/Inventory";
 import Login from "./pages/Login/Login";
@@ -56,6 +57,7 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route path="/blog" element={<Blog/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />

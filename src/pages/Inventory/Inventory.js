@@ -10,7 +10,7 @@ const Inventory = () => {
   const { id } = useParams();
   const [product] = useProductDetails(id);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     const url = `http://localhost:5000/product/${id}`;
@@ -28,6 +28,7 @@ const Inventory = () => {
     .catch((error) => {
       console.error("Error:", error);
     });
+    reset();
   };
 
   const handelDelivered = () =>{
