@@ -9,7 +9,7 @@ const Shipping = () => {
     return (
         <Container>
             <h2 className='mt-5 mb-5 text-center fw-bold products-header'>The Largest Shipping World Wide</h2>
-            <div className='d-flex gap-3'>
+            <div className='shipping d-flex gap-3'>
                 <div className='shipping-card'>
                     <h3 className='fs-4 fw-bold'>Ground Shipping</h3>
                     <img className='img-fluid' src={groundShipping} alt=''/>

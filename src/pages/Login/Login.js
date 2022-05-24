@@ -7,6 +7,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 import "./Login.css";
 
 const Login = () => {
@@ -18,10 +19,11 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+  const [token] = useToken(user || user1)
   let errorMassage;
   let loadingMassage;
 
-  if (user || user1) {
+  if (token) {
     navigate(from, { replace: true });
   }
   if (loading || loading1) {
@@ -35,12 +37,12 @@ const Login = () => {
     );
   }
 
-  const handelLoginSubmit = (e) => {
+  const handelLoginSubmit = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passRef.current.value;
 
-    signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(email, password);
     toast("User Login ...");
   };
 
