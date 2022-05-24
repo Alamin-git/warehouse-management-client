@@ -9,7 +9,7 @@ const ManageProducts = () => {
   const handelDltProduct = id =>{
     const proceed = window.confirm('Are You Sure');
     if(proceed){
-      const url = `http://localhost:5000/product/${id}`;
+      const url = `https://it-warehouse.herokuapp.com/product/${id}`;
       fetch(url, {
         method: 'DELETE'
       })

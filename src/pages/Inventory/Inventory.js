@@ -13,7 +13,7 @@ const Inventory = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://it-warehouse.herokuapp.com/product/${id}`;
     fetch(url, {
       method: "PUT",
           headers: {
@@ -32,7 +32,7 @@ const Inventory = () => {
   };
 
   const handelDelivered = () =>{
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://it-warehouse.herokuapp.com/product/${id}`;
     fetch(url, {
       method: "PUT",
           headers: {

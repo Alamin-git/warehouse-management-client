@@ -6,10 +6,9 @@ import auth from "../../firebase.init";
 
 const UserItems = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
   const [userProduct, setUserProduct] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:5000/userproduct/${user.email}`;
+    const url = `https://it-warehouse.herokuapp.com/userproduct/${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setUserProduct(data));
@@ -18,7 +17,7 @@ const UserItems = () => {
   const handelDltProduct = (id) => {
     const proceed = window.confirm("Are You Sure");
     if (proceed) {
-      const url = `http://localhost:5000/product/${id}`;
+      const url = `https://it-warehouse.herokuapp.com/product/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -35,7 +34,9 @@ const UserItems = () => {
 
   return (
     <Container>
-      <h2 className="mt-5 mb-5 text-center fw-bold products-header">User:  {user.displayName} <br /> items: {userProduct.length}</h2>
+      <h2 className="mt-5 mb-5 text-center fw-bold products-header">
+        User: {user.displayName} <br /> items: {userProduct.length}
+      </h2>
       <Table striped bordered hover>
         <tbody>
           {userProduct.map((product) => (

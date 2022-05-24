@@ -10,7 +10,7 @@ const AddItems = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        const url = `http://localhost:5000/product`
+        const url = `https://it-warehouse.herokuapp.com/product`
         fetch(url, {
             method: 'POST',
             headers: {
