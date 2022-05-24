@@ -22,7 +22,6 @@ const HeaderMenu = () => {
               <Nav.Link as={CustomLink} to="/blog" className="">
                 Blog
               </Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
               {user &&
                 <>
                   <Nav.Link
